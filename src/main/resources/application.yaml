@@ -1,0 +1,38 @@
+server:
+    port: 8081
+mybatis-plus:
+    configuration:
+        #在映射实体或者属性时，将数据库中表名和字段名中的下划线去掉，按照驼峰命名法映射
+        map-underscore-to-camel-case: true
+        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    global-config:
+        db-config:
+            id-type: ASSIGN_ID #开启雪花算法
+    mapper-locations: classpath:mapper/*.xml #扫描xml配置文件
+spring:
+    application:
+        name: 专业设计代码
+    datasource:
+        druid:
+            driver-class-name: com.mysql.cj.jdbc.Driver
+            url: jdbc:mysql://localhost:3306/ssm_lab?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+            username: root
+            password: gyh155222334
+    redis:
+        host: localhost
+        port: 6379
+        #password: 123456
+        database: 0 #操作的是0号数据库
+        jedis:
+            #Redis连接池配置
+            pool:
+                max-active: 8 #最大连接数
+                max-wait: 1ms #连接池最大阻塞等待时间
+                max-idle: 4 #连接池中的最大空闲连接
+                min-idle: 0 #连接池中的最小空闲连接
+        cache:
+            redis:
+                time-to-live: 1800000
+#图片地址
+ssm_lab:
+    path: F:\java技术核心二笔记\庄老师的ssm实验\ssm_lab_img\
